@@ -27,3 +27,6 @@ deployment/cookbooks
 manifest.yml
 config/unicorn.rb
 db/schema.rb
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
