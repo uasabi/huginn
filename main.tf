@@ -3,6 +3,19 @@ provider "heroku" {
   api_key = "${var.env_api_key}"
 }
 
+provider "cloudflare" {
+  email = "${var.cloudflare_email}"
+  token = "${var.cloudflare_token}"
+}
+
+resource "cloudflare_record" "www" {
+  domain = "${var.cloudflare_www_domain}"
+  name = "${var.cloudflare_www_name}"
+  value = "${var.cloudflare_www_value}"
+  type = "${var.cloudflare_www_type}"
+  ttl = "${var.cloudflare_www_ttl}"
+}
+
 output "heroku_app_url" {
  value = "${heroku_app.huginn.web_url}"
 }
