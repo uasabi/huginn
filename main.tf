@@ -11,13 +11,16 @@ provider "cloudflare" {
 resource "cloudflare_record" "www" {
   domain = "${var.cloudflare_www_domain}"
   name = "${var.cloudflare_www_name}"
-  value = "${var.cloudflare_www_value}"
+  value = "${heroku_app.huginn.heroku_hostname}"
   type = "${var.cloudflare_www_type}"
-  ttl = "${var.cloudflare_www_ttl}"
 }
 
 output "heroku_app_url" {
  value = "${heroku_app.huginn.web_url}"
+}
+
+output "heroku_config_vars" {
+ value = "${heroku_app.huginn.all_config_vars}"
 }
 
 output "heroku_app_hostname" {

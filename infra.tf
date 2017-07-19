@@ -9,6 +9,4 @@ variable "cloudflare_email" {}
 variable "cloudflare_token" {}
 variable "cloudflare_www_domain" {}
 variable "cloudflare_www_name" {}
-variable "cloudflare_www_value" {}
 variable "cloudflare_www_type" {}
-variable "cloudflare_www_ttl" {}
