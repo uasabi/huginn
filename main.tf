@@ -15,6 +15,11 @@ resource "cloudflare_record" "www" {
   type = "${var.cloudflare_www_type}"
 }
 
+resource "heroku_domain" "default" {
+  app      = "${heroku_app.huginn.name}"
+  hostname = "${var.cloudflare_www_name}.${var.cloudflare_www_domain}"
+}
+
 output "heroku_app_url" {
  value = "${heroku_app.huginn.web_url}"
 }
