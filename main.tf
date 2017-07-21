@@ -41,6 +41,18 @@ resource "heroku_app" "huginn" {
   region = "us"
 }
 
+resource "heroku_addon" "ssl" {
+  app = "${heroku_app.huginn.name}"
+  plan = "ssl:endpoint"
+}
+
+resource "heroku_cert" "ssl_certificate" {
+  app               = "${heroku_app.huginn.name}"
+  certificate_chain = "${file("server.crt")}"
+  private_key       = "${file("server.key")}"
+  depends_on = ["heroku_addon.ssl"]
+}
+
 resource "heroku_addon" "database" {
   app = "${heroku_app.huginn.name}"
   plan = "${var.postgres_plan}"
