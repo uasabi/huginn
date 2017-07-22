@@ -13,6 +13,7 @@ resource "cloudflare_record" "www" {
   name = "${var.cloudflare_www_name}"
   value = "${heroku_app.huginn.heroku_hostname}"
   type = "${var.cloudflare_www_type}"
+  proxied = true
 }
 
 resource "heroku_domain" "default" {
