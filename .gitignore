@@ -31,3 +31,4 @@ db/schema.rb
 terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvars
+huginn.dump
